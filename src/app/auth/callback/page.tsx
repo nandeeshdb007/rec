@@ -1,7 +1,7 @@
 import { onAuthenticateUser } from "@/actions/user";
 import { redirect } from "next/navigation";
 
-const DashboardPage = async () => {
+const CallBackPage = async () => {
   const auth = await onAuthenticateUser();
   if (auth.status === 200 || auth.status === 201) {
     return redirect(`/dashboard/${auth.user?.workSpace[0].id}`);
@@ -11,4 +11,4 @@ const DashboardPage = async () => {
   }
 };
 
-export default DashboardPage;
+export default CallBackPage;

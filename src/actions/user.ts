@@ -1,4 +1,4 @@
-"use sever";
+"use server";
 
 import { currentUser } from "@clerk/nextjs/server";
 import { client } from "@/lib/prisma";
@@ -64,8 +64,7 @@ export const onAuthenticateUser = async () => {
       return { status: 201, user: newUser };
     }
     return { status: 400 };
-  } catch (error) {
-    console.log("onAuthenticateUser", error);
+  } catch {
     return { status: 400 };
   }
 };
