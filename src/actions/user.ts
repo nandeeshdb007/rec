@@ -61,7 +61,7 @@ export const onAuthenticateUser = async () => {
       },
     });
     if (newUser) {
-      return { status: 200, user: newUser };
+      return { status: 201, user: newUser };
     }
     return { status: 400 };
   } catch (error) {
