@@ -28,7 +28,7 @@ export const onAuthenticateUser = async () => {
       },
     });
     if (existingUser) {
-      return { satus: 200, user: existingUser };
+      return { status: 200, user: existingUser };
     }
 
     const newUser = await client.user.create({

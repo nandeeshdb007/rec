@@ -1,8 +1,18 @@
 import { getNotifications, onAuthenticateUser } from "@/actions/user";
-import { getAllUserVideos, getWorkspaceFolders, getWorkspaces, verifyAccessToWorkspace } from "@/actions/workspace";
+import {
+  getAllUserVideos,
+  getWorkspaceFolders,
+  getWorkspaces,
+  verifyAccessToWorkspace,
+} from "@/actions/workspace";
 import { redirect } from "next/navigation";
-import { QueryClient } from "@tanstack/react-query";
+import {
+  dehydrate,
+  HydrationBoundary,
+  QueryClient,
+} from "@tanstack/react-query";
 import React from "react";
+import SideBar from "@/components/ui/global/sidebar";
 
 const WorkspaceIdLayout = async ({
   children,
@@ -45,7 +55,13 @@ const WorkspaceIdLayout = async ({
     queryKey: ["user-notifications"],
     queryFn: () => getNotifications(),
   });
-  return <div></div>;
+  return (
+    <HydrationBoundary state={dehydrate(query)}>
+      <div className="flex h-screen w-screen">
+        <SideBar activeWorkspaceId={workspaceId} />
+      </div>
+    </HydrationBoundary>
+  );
 };
 
 export default WorkspaceIdLayout;
