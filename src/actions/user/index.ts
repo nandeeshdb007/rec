@@ -97,3 +97,51 @@ export const getNotifications = async () => {
     return { status: 404 };
   }
 };
+
+export const searchWorkSpace = async (query: string) => {
+  try {
+    const user = await currentUser();
+    if (!user) return { status: 404 };
+
+    const workSpace = await client.user.findMany({
+      where: {
+        OR: [
+          {
+            firstName: { contains: query },
+          },
+          {
+            lastName: { contains: query },
+          },
+          {
+            email: { contains: query },
+          },
+        ],
+        NOT: [
+          {
+            clerkId: user.id,
+          },
+        ],
+      },
+      select: {
+        id: true,
+        subcription: {
+          select: {
+            plan: true,
+          },
+        },
+        firstName: true,
+        lastName: true,
+        image: true,
+        email: true,
+      },
+    });
+
+    if (workSpace && workSpace.length > 0) {
+      return { status: 200, data: workSpace };
+    }
+
+    return { status: 404, data: null };
+  } catch {
+    return { status: 504 };
+  }
+};
