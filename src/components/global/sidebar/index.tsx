@@ -1,6 +1,14 @@
 "use client";
 import Image from "next/image";
 import React from "react";
+
+import { useRouter } from "next/navigation";
+
+import { useQueryData } from "@/hooks/useQueryData";
+import { getWorkspaces } from "@/actions/workspace";
+import { WorkspaceProps } from "@/types/index.types";
+import Modal from "../modal";
+import { PlusCircle } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -9,14 +17,8 @@ import {
   SelectValue,
   SelectGroup,
   SelectItem,
-} from "../../select";
-import { useRouter } from "next/navigation";
-import { Separator } from "../../separator";
-import { useQueryData } from "@/hooks/useQueryData";
-import { getWorkspaces } from "@/actions/workspace";
-import { WorkspaceProps } from "@/types/index.types";
-import Modal from "../modal";
-import { PlusCircle } from "lucide-react";
+} from "@radix-ui/react-select";
+import { Separator } from "@radix-ui/react-context-menu";
 
 type Props = {
   activeWorkspaceId: string;

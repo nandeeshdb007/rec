@@ -5,7 +5,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../../dialog";
+} from "@/components/ui/dialog";
 import { DialogDescription } from "@radix-ui/react-dialog";
 
 type Props = {
