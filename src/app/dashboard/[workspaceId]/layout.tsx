@@ -12,7 +12,7 @@ import {
   QueryClient,
 } from "@tanstack/react-query";
 import React from "react";
-import SideBar from "@/components/ui/global/sidebar";
+import SideBar from "@/components/global/sidebar";
 
 const WorkspaceIdLayout = async ({
   children,
