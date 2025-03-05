@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 import React, { useEffect, useState } from "react";
 import { useQueryData } from "./useQueryData";
-import { searchWorkSpace } from "@/actions/user";
+import { searchUsers } from "@/actions/user";
 
-export const useSeacrh = (key: string, type: "WORKSPACE") => {
+export const useSeacrh = (key: string, type: "USERS") => {
   const [query, setQuery] = useState("");
   const [debounce, setDebounce] = useState("");
 
@@ -34,9 +34,9 @@ export const useSeacrh = (key: string, type: "WORKSPACE") => {
   const { refetch, isFetching } = useQueryData(
     [key, debounce],
     async ({ queryKey }) => {
-      if (type === "WORKSPACE") {
-        const workSpace = await searchWorkSpace(queryKey[1] as string);
-        if (workSpace.status === 200) setOnUsers(workSpace.data);
+      if (type === "USERS") {
+        const users = await searchUsers(queryKey[1] as string);
+        if (users.status === 200) setOnUsers(users.data);
       }
     },
     false

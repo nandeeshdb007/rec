@@ -98,12 +98,12 @@ export const getNotifications = async () => {
   }
 };
 
-export const searchWorkSpace = async (query: string) => {
+export const searchUsers = async (query: string) => {
   try {
     const user = await currentUser();
     if (!user) return { status: 404 };
 
-    const workSpace = await client.user.findMany({
+    const users = await client.user.findMany({
       where: {
         OR: [
           {
@@ -136,8 +136,8 @@ export const searchWorkSpace = async (query: string) => {
       },
     });
 
-    if (workSpace && workSpace.length > 0) {
-      return { status: 200, data: workSpace };
+    if (users && users.length > 0) {
+      return { status: 200, data: users };
     }
 
     return { status: 404, data: undefined };
