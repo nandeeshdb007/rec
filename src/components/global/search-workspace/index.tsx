@@ -1,11 +1,13 @@
-"use server"
+"use server";
+
+import { useSeacrh } from "@/hooks/useSearch";
 
 const WorkSpaceSearch = ({ workspaceId }: { workspaceId: string }) => {
-    return (
-        <div>
+  const { query, onSearchQuery, isFetching, onUsers } = useSeacrh(
+    "get-workspace",
+    "WORKSPACE"
+  );
+  return <div></div>;
+};
 
-        </div>
-    )
-}
-
-export default WorkSpaceSearch
+export default WorkSpaceSearch;

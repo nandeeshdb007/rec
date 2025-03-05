@@ -1,4 +1,4 @@
-import Spinner from "@/components/ui/global/loader/spinner";
+import Spinner from "@/components/global/loader/spinner";
 import React from "react";
 
 const AuthLoading = () => {
