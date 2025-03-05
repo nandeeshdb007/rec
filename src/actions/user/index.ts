@@ -140,7 +140,7 @@ export const searchWorkSpace = async (query: string) => {
       return { status: 200, data: workSpace };
     }
 
-    return { status: 404, data: null };
+    return { status: 404, data: undefined };
   } catch {
     return { status: 504 };
   }
