@@ -1,6 +1,7 @@
 import {
   Card,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -9,7 +10,7 @@ import React from "react";
 type Props = {
   title: string;
   description: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   footer?: React.ReactNode;
 };
 
@@ -22,7 +23,8 @@ const GlobalCard = ({ title, description, children, footer }: Props) => {
           {description}
         </CardDescription>
       </CardHeader>
-      <div className="pt-4">{children}</div>
+      {children && <div className="pt-4">{children}</div>}
+      {footer && <CardFooter className="pt-4">{footer}</CardFooter>}
     </Card>
   );
 };
