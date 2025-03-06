@@ -19,6 +19,7 @@ import {
   SelectItem,
 } from "@radix-ui/react-select";
 import { Separator } from "@radix-ui/react-context-menu";
+import Search from "../search";
 
 type Props = {
   activeWorkspaceId: string;
@@ -80,7 +81,10 @@ const SideBar = ({ activeWorkspaceId }: Props) => {
       <Modal
         trigger={
           <span className="text-sm cursir-pointer flex items-center justify-center border-t-neutral-800/90 hover:bg-neutral-800/60 w-full rounded-sm p-[5px] gap-2">
-            <PlusCircle size={15} className="text-neutral-800/90 fill-neutral-500" />
+            <PlusCircle
+              size={15}
+              className="text-neutral-800/90 fill-neutral-500"
+            />
             <span className="text-neutral-400 font-semibold text-xs">
               Invite To WorkSpace
             </span>
@@ -89,7 +93,7 @@ const SideBar = ({ activeWorkspaceId }: Props) => {
         title="Inivite To Workspce"
         description="Invite other users to your workspace"
       >
-        WorkSpaceSearch
+        <Search workspaceId={activeWorkspaceId} />
       </Modal>
     </div>
   );
