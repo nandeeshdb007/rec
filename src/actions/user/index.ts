@@ -41,7 +41,7 @@ export const onAuthenticateUser = async () => {
         studio: {
           create: {},
         },
-        subcription: {
+        subscription: {
           create: {},
         },
         workSpace: {
@@ -53,7 +53,7 @@ export const onAuthenticateUser = async () => {
       },
       include: {
         workSpace: true,
-        subcription: {
+        subscription: {
           select: {
             plan: true,
           },
@@ -124,7 +124,7 @@ export const searchUsers = async (query: string) => {
       },
       select: {
         id: true,
-        subcription: {
+        subscription: {
           select: {
             plan: true,
           },

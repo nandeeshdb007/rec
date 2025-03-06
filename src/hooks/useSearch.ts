@@ -10,7 +10,7 @@ export const useSeacrh = (key: string, type: "USERS") => {
   const [onUsers, setOnUsers] = useState<
     | {
         id: string;
-        subcription: {
+        subscription: {
           plan: "PRO" | "FREE";
         } | null;
         firstName: string | null;

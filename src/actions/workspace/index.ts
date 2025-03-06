@@ -126,7 +126,7 @@ export const getWorkspaces = async () => {
         clerkId: user.id,
       },
       select: {
-        subcription: {
+        subscription: {
           select: {
             plan: true,
           },

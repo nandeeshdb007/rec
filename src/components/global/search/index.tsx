@@ -55,7 +55,7 @@ const Search = ({ workspaceId }: { workspaceId: string }) => {
                   {user.firstName} {user.lastName}
                 </h3>
                 <p className="lowercase text-xs bg-white px-2 rounded-lg text-[#1e1e1e]">
-                  {user.subcription?.plan}
+                  {user.subscription?.plan}
                 </p>
               </div>
               <div className="flex-1 flex justify-end items-center">

@@ -22,7 +22,7 @@ model User {
   studio       Media?
   workSpace    WorkSpace[]
   videos       Video[]
-  subcription  Subcription?
+  subscription  Subscription?
   members      Member[]
   notification Notification[]
   sender       Invite[]       @relation("sender")
@@ -33,11 +33,11 @@ model User {
   updatedAt DateTime @default(now())
 }
 
-model Subcription {
+model Subscription {
   id         String           @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   User       User?            @relation(fields: [userId], references: [id])
   userId     String?          @unique @db.Uuid
-  plan       SUBCRIPTION_PLAN @default(FREE)
+  plan       SUBSCRIPTION_PLAN @default(FREE)
   customerId String?          @unique
   createdAt  DateTime         @default(now())
   updatedAt  DateTime         @default(now())
@@ -135,7 +135,7 @@ enum Type {
   PUBLIC
 }
 
-enum SUBCRIPTION_PLAN {
+enum SUBSCRIPTION_PLAN {
   FREE
   PRO
 }
