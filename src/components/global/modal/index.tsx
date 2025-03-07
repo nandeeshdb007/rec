@@ -2,11 +2,11 @@ import React from "react";
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { DialogDescription } from "@radix-ui/react-dialog";
 
 type Props = {
   trigger: React.ReactNode;
@@ -22,10 +22,12 @@ const Modal = ({ trigger, children, title, description, className }: Props) => {
       <DialogTrigger className={className} asChild>
         {trigger}
       </DialogTrigger>
-      <DialogContent className="bg-black">
-        <DialogTitle>{title}</DialogTitle>
-        <DialogDescription>{description}</DialogDescription>
-        <DialogHeader>{children}</DialogHeader>
+      <DialogContent className="bg-black" title="dialog-title">
+        <DialogHeader>
+          <DialogTitle>{title}</DialogTitle>
+          <DialogDescription>{description}</DialogDescription>
+        </DialogHeader>
+        {children}
       </DialogContent>
     </Dialog>
   );
