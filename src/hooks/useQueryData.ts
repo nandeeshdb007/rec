@@ -3,6 +3,8 @@ import {
   QueryFunction,
   QueryKey,
   useQuery,
+  useMutationState,
+  MutationKey,
 } from "@tanstack/react-query";
 
 export const useQueryData = (
@@ -17,4 +19,18 @@ export const useQueryData = (
   });
 
   return { data, isFetched, isPending, refetch, isFetching };
+};
+
+export const useMutationDataState = (mutationKey: MutationKey) => {
+  const data = useMutationState({
+    filters: { mutationKey },
+    select: (mutation) => {
+      return {
+        variables: mutation.state.variables as any,
+        status: mutation.state.status,
+      };
+    },
+  });
+  const latestVariable = data[data.length - 1];
+  return { latestVariable };
 };
