@@ -8,7 +8,7 @@ import { useQueryData } from "@/hooks/useQueryData";
 import { getWorkspaces } from "@/actions/workspace";
 import { NotificationProps, WorkspaceProps } from "@/types/index.types";
 import Modal from "../modal";
-import { Menu, MenuIcon, PlusCircle } from "lucide-react";
+import { MenuIcon, PlusCircle } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -32,6 +32,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import InfoBar from "../info-bar";
 
 type Props = {
   activeWorkspaceId: string;
@@ -203,7 +204,7 @@ const SideBar = ({ activeWorkspaceId }: Props) => {
   );
   return (
     <div className="full">
-      {/* Infobar*/}
+      <InfoBar />
       {/*Sheet mobile and desktop */}
       <div className="md:hidden fixed my-4">
         <Sheet>
