@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { UserButton } from "@clerk/nextjs";
 import { FileVideo2Icon, Search, UploadIcon } from "lucide-react";
 import React from "react";
 
-type Props = {};
+type Props = null;
 
 const InfoBar = (props: Props) => {
   return (
@@ -17,11 +18,11 @@ const InfoBar = (props: Props) => {
         />
       </div>
       <div className="flex items-center gap-4  px-1 lg:px-4">
-        <Button className="bg-white text-black hover:bg-[#9d9d9d]  flex items-center gap-2">
+        <Button className="bg-white text-black hover:bg-black hover:text-white  flex items-center gap-2">
           <UploadIcon size={30} />{" "}
           <span className="flex items-center gap-2">Upload</span>
         </Button>
-        <Button className="bg-white text-black hover:bg-[#9d9d9d]  flex items-center gap-2">
+        <Button className="bg-white text-black hover:bg-black hover:text-white  flex items-center gap-2">
           <FileVideo2Icon size={30} />
           <span className="flex items-center gap-2">Record</span>
         </Button>
