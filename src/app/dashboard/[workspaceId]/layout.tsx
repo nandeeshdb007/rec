@@ -13,6 +13,7 @@ import {
 } from "@tanstack/react-query";
 import React from "react";
 import SideBar from "@/components/global/sidebar";
+import GlobalHeader from "@/components/global/global-header";
 
 const WorkspaceIdLayout = async ({
   children,
@@ -59,6 +60,10 @@ const WorkspaceIdLayout = async ({
     <HydrationBoundary state={dehydrate(query)}>
       <div className="flex h-screen w-screen">
         <SideBar activeWorkspaceId={workspaceId} />
+        <div className="w-full pt-20 p-6 overflow-auto">
+          <GlobalHeader workSpace={hasAccess.data.workspace} />
+          <div className="mt-4">{children}</div>
+        </div>
       </div>
     </HydrationBoundary>
   );
