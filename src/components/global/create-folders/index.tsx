@@ -1,3 +1,4 @@
+"use client"
 import { Button } from "@/components/ui/button";
 import { useCreateFolders } from "@/hooks/useCreateFolders";
 import { FolderPlusIcon } from "lucide-react";

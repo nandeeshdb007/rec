@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+import CreateFolders from "@/components/global/create-folders";
 import CreateWorkSpace from "@/components/global/create-workspace";
+import Folders from "@/components/global/folders";
 import { Table } from "@/components/ui/table";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import React from "react";
 
 type Props = {
@@ -31,8 +33,14 @@ const WorkSpace = ({ params }: Props) => {
           </TabsList>
           <div className="flex gap-x-3 ">
             <CreateWorkSpace />
+            <CreateFolders workspaceId={params.workspaceId} />
           </div>
         </div>
+        <section className="py-9">
+          <TabsContent value="videos">
+            <Folders workspaceId={params.workspaceId} />
+          </TabsContent>
+        </section>
       </Tabs>
     </div>
   );
