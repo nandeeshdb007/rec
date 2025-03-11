@@ -222,3 +222,24 @@ export const renameFolders = async (folderId: string, name: string) => {
     return { status: 500, data: error };
   }
 };
+
+export const createFolder = async (workspaceId: string) => {
+  try {
+    const isNewFolder = await client.workSpace.update({
+      where: {
+        id: workspaceId,
+      },
+      data: {
+        folder: {
+          create: { name: "Untitled" },
+        },
+      },
+    });
+    if (isNewFolder) {
+      return { status: 200, message: "New folder created" };
+    }
+    return { status: 400, message: "Could not created folder" };
+  } catch (error) {
+    return { status: 500, message: error };
+  }
+};
