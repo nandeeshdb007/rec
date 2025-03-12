@@ -9,6 +9,7 @@ import { EventHandler, useRef, useState } from "react";
 import { useMutationData } from "@/hooks/useMutationData";
 import { renameFolders } from "@/actions/workspace";
 import { Input } from "@/components/ui/input";
+import { useMutationDataState } from "@/hooks/useQueryData";
 
 type Props = {
   name: string;
@@ -41,6 +42,8 @@ const Folder = ({ name, optimistic, id, count }: Props) => {
     router.push(`${pathName}/folder/${id}`);
   };
 
+  const { latestVariable } = useMutationDataState(["rename-folders"]);
+
   const handleNameDoubleClick = (e: React.MouseEvent<HTMLParagraphElement>) => {
     e.stopPropagation();
     Rename();
@@ -49,7 +52,7 @@ const Folder = ({ name, optimistic, id, count }: Props) => {
   const updateFolderName = (e: React.FocusEvent<HTMLInputElement>) => {
     if (inputRef.current) {
       if (inputRef.current.value) {
-        mutate({ name: inputRef.current.value });
+        mutate({ name: inputRef.current.value, id });
       } else {
         Rename();
       }
@@ -83,7 +86,11 @@ const Folder = ({ name, optimistic, id, count }: Props) => {
               onDoubleClick={handleNameDoubleClick}
               className="text-neutral-300"
             >
-              {name}
+              {latestVariable &&
+              latestVariable.status === "pending" &&
+              latestVariable.variables.id === id
+                ? latestVariable.variables.name
+                : name}
             </p>
           )}
 
