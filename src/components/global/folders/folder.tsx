@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-"use client"
+"use client";
 
 import { cn } from "@/lib/utils";
 import { usePathname, useRouter } from "next/navigation";
@@ -47,22 +47,18 @@ const Folder = ({ name, optimistic, id, count }: Props) => {
   };
 
   const updateFolderName = (e: React.FocusEvent<HTMLInputElement>) => {
-    if (inputRef.current && folderCardRef.current) {
-      if (
-        !inputRef.current.contains(event?.target as Node | null) &&
-        !folderCardRef.current.contains(event?.target as Node | null)
-      ) {
-        if (inputRef.current.value) {
-          mutate({ name: inputRef.current.value });
-        } else {
-          Rename();
-        }
+    if (inputRef.current) {
+      if (inputRef.current.value) {
+        mutate({ name: inputRef.current.value });
+      } else {
+        Rename();
       }
     }
   };
 
   return (
     <div
+      ref={folderCardRef}
       onClick={handleFolderClick}
       className={cn(
         optimistic && "opacity-60",
