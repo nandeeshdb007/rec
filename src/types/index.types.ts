@@ -41,3 +41,32 @@ export type FoldersProps = {
     workSpaceId: string | null;
   })[];
 };
+export type FolderProps = {
+  status: number;
+  data: {
+    name: string;
+    _count: {
+      videos: number;
+    };
+  };
+};
+
+export type VideosProps = {
+  status: number;
+  data: {
+    User: {
+      firstName: string | null;
+      lastName: string | null;
+      image: string | null;
+    } | null;
+    id: string;
+    processing: boolean;
+    Folder: {
+      id: string;
+      name: string;
+    } | null;
+    createdAt: Date;
+    title: string | null;
+    source: string;
+  };
+};
