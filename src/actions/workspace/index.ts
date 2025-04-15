@@ -265,9 +265,31 @@ export const getFolderInfo = async (folderId: string) => {
         data: folder,
       };
     }
-    return { status: 400, data:null };
-
+    return { status: 400, data: null };
   } catch (error) {
     return { status: 500, message: error };
+  }
+};
+
+export const moveVideoLocation = async (
+  videoId: string,
+  workspaceId: string,
+  folderId: string
+) => {
+  try {
+    const location = await client.video.update({
+      where: {
+        id: videoId,
+      },
+      data: {
+        folderId: folderId || null,
+        workSpaceId: workspaceId,
+      },
+    });
+    if (location) return { status: 200, data: "Folder changed successfully" };
+    return { status: 404, data: "Workspace/folder not found" };
+  } catch (error) {
+    console.log("moveVideoLocation", error);
+    return { status: 500, data: "Someting went wrong" };
   }
 };
