@@ -7,12 +7,15 @@ import { cn } from "@/lib/utils";
 import Folder from "./folder";
 import { getWorkspaceFolders } from "@/actions/workspace";
 import { FoldersProps } from "@/types/index.types";
+import { useDispatch } from "react-redux";
+import { FOLDERS } from "@/redux/slices/folders";
 
 type Props = {
   workspaceId: string;
 };
 
 const Folders = ({ workspaceId }: Props) => {
+  const dispatch = useDispatch();
   const { data, isFetched } = useQueryData(["workspace-folders"], () =>
     getWorkspaceFolders(workspaceId)
   );
@@ -22,6 +25,7 @@ const Folders = ({ workspaceId }: Props) => {
   const { data: folders, status } = data as FoldersProps;
 
   if (isFetched && folders) {
+    dispatch(FOLDERS({ folders }));
   }
   return (
     <div className="flex flex-col gap-4">

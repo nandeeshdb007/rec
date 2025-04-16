@@ -33,6 +33,8 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import InfoBar from "../info-bar";
+import { useDispatch } from "react-redux";
+import { WORKSPACES } from "@/redux/slices/workspaces";
 
 type Props = {
   activeWorkspaceId: string;
@@ -41,6 +43,7 @@ type Props = {
 const SideBar = ({ activeWorkspaceId }: Props) => {
   //WIP: upgrate button func
   const router = useRouter();
+  const dispatch = useDispatch();
   const onChangeActiveWorkspace = (value: string) => {
     router.push(`/dashboard/${value}`);
   };
@@ -52,6 +55,9 @@ const SideBar = ({ activeWorkspaceId }: Props) => {
     (s) => s.id == activeWorkspaceId
   );
 
+  if (isFetched && WorkSpace) {
+    dispatch(WORKSPACES({ workspaces: WorkSpace.workSpace }));
+  }
   const menuItems = MENU_ITEMS(activeWorkspaceId);
   const { data: notifications } = useQueryData(
     ["user-notifications"],

@@ -5,7 +5,11 @@ import { getWorkspaceFolders, moveVideoLocation } from "@/actions/workspace";
 import useZodForm from "./useZodSchema";
 import { moveVideoSchema } from "@/components/forms/change-video-location/schema";
 
-export const useMoveVideos = (videoId: string, currentWorkspace: string) => {
+export const useMoveVideos = (
+  videoId: string,
+  currentWorkspace: string,
+  currentFolder: string
+) => {
   const { folders } = useAppSelector((state) => state.foldersReducer);
   const { workspaces } = useAppSelector((state) => state.workspacesReducer);
   const [isFetching, setIsFetching] = useState(false);
@@ -28,7 +32,7 @@ export const useMoveVideos = (videoId: string, currentWorkspace: string) => {
   const { errors, onFormSubmit, watch, register } = useZodForm(
     moveVideoSchema,
     mutate,
-    { folder_id: null, workspace_id: currentWorkspace }
+    { folder_id: currentFolder, workspace_id: currentWorkspace }
   );
 
   const fectchFolders = async (workspace: string) => {
