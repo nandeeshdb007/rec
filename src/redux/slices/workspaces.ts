@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type initialStateProps = {
   workspaces: {
@@ -16,7 +16,7 @@ export const workspacesSlice = createSlice({
   name: "workspaces",
   initialState,
   reducers: {
-    WORKSPACES: (state, action) => {
+    WORKSPACES: (state, action: PayloadAction<initialStateProps>) => {
       return { ...action.payload };
     },
   },

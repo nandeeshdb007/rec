@@ -13,23 +13,6 @@ type Props = {
   workspaceId: string;
 };
 
-const video = {
-    User: {
-      firstName: "John",
-      lastName: "Doe",
-      image: "https://example.com/profile.jpg",
-    },
-    id: "123456",
-    processing: false,
-    Folder: {
-      id: "folder_001",
-      name: "Project Files",
-    },
-    createdAt: new Date("2024-03-12T10:30:00Z"),
-    title: "Sample Document",
-    source: "System Upload",
-  };
-
 const Videos = ({ folderId, videosKey, workspaceId }: Props) => {
   //WIP: ADD videos logic
   const { data: videoData } = useQueryData([videosKey], () =>
@@ -42,7 +25,7 @@ const Videos = ({ folderId, videosKey, workspaceId }: Props) => {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
           <VideoIcon />
-          <h2 className="text-[#bdbdb]">Videos</h2>
+          <h2 className="text-[#bdbdbd] text-xl">Videos</h2>
         </div>
       </div>
       <section
@@ -52,12 +35,13 @@ const Videos = ({ folderId, videosKey, workspaceId }: Props) => {
             : "grid grid-cols-1 gap-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5"
         )}
       >
-        {/* {videoStatus === 200 ? (
-          videos.map((video) => <VideoCard />)
+        {videoStatus === 200 ? (
+          videos.map((video) => (
+            <VideoCard workSpaceId={workspaceId} {...video} key={video.id} />
+          ))
         ) : (
-          <p className="text-[#bdbdbd]">No vidos in workspace</p>
-        )} */}
-        <VideoCard workSpaceId={workspaceId} {...video} />
+          <p className="text-[#bdbdbd]">No videos in workspace</p>
+        )}
       </section>
     </div>
   );

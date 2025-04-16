@@ -57,6 +57,6 @@ export const useMoveVideos = (videoId: string, currentWorkspace: string) => {
     isPending,
     isFolders,
     folders,
-    workspaces
-  }
+    workspaces,
+  };
 };
